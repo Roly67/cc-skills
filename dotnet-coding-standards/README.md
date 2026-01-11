@@ -2,6 +2,7 @@
   <img src="https://img.shields.io/badge/.NET-10-512bd4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET 10" />
   <img src="https://img.shields.io/badge/C%23-12-239120?style=for-the-badge&logo=csharp&logoColor=white" alt="C# 12" />
   <img src="https://img.shields.io/badge/Version-2.3.0-7c3aed?style=for-the-badge" alt="Version 2.3.0" />
+  <img src="https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge" alt="MIT License" />
 </p>
 
 <h1 align="center">
@@ -279,6 +280,10 @@ dotnet-coding-standards/
 | `1.0.0` | 2025-10-15 | Initial release |
 
 <br>
+
+## License
+
+This skill is licensed under the [MIT License](../LICENSE).
 
 ---
 

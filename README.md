@@ -1,5 +1,6 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Claude_Code-Skills-7c3aed?style=for-the-badge&labelColor=1e1e2e" alt="Claude Code Skills" />
+  <img src="https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge" alt="MIT License" />
 </p>
 
 <h1 align="center">
@@ -14,7 +15,8 @@
   <a href="#installation">Install</a> •
   <a href="#available-skills">Skills</a> •
   <a href="#usage">Usage</a> •
-  <a href="#contributing">Contributing</a>
+  <a href="#contributing">Contributing</a> •
+  <a href="#license">License</a>
 </p>
 
 ---
@@ -227,6 +229,10 @@ triggers:
 - ✓ Keep content current and maintained
 
 <br>
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
