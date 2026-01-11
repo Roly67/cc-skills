@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "cc-skills",
+  "description": "Curated collection of production-grade skills for Claude Code, including enterprise .NET development standards, patterns, and templates",
+  "owner": {
+    "name": "Roly67",
+    "email": "rrat@duck.com"
+  },
+  "plugins": [
+    {
+      "name": "dotnet-coding-standards",
+      "description": ".NET coding standards and patterns for enterprise development. Covers Clean Architecture, Serilog logging, Sentry error tracking, StyleCop compliance, unit testing with 80%+ coverage, async/await patterns, and CI/CD configuration. Includes 16 technical standards, 5 project type guides, checklists, templates, and IDE snippets.",
+      "version": "2.3.0",
+      "author": {
+        "name": "Roly67"
+      },
+      "source": "./dotnet-coding-standards",
+      "category": "development",
+      "tags": ["dotnet", "csharp", "enterprise", "clean-architecture", "coding-standards"]
+    }
+  ]
+}

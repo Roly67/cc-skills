@@ -1,0 +1,378 @@
+<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+
+	<!-- CS Class -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/Shortcut/@EntryValue">csclass</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/Description/@EntryValue">CS Class with copyright header and documentation</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/Text/@EntryValue">// &lt;copyright file="$CLASSNAME$.cs" company="{CompanyName}"&gt;
+// © {CompanyName}
+// &lt;/copyright&gt;
+
+namespace $NAMESPACE$;
+
+/// &lt;summary&gt;
+/// $DESCRIPTION$
+/// &lt;/summary&gt;
+public class $CLASSNAME$
+{
+    $END$
+}</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/Field/=CLASSNAME/@EntryIndexedValue">CLASSNAME</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/Field/=CLASSNAME/Expression/@EntryValue">getFileNameWithoutExtension()</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/Field/=NAMESPACE/@EntryIndexedValue">NAMESPACE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/Field/=NAMESPACE/Expression/@EntryValue">fileDefaultNamespace()</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/Field/=DESCRIPTION/@EntryIndexedValue">DESCRIPTION</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Class/Field/=DESCRIPTION/Expression/@EntryValue">constant("Description of the class.")</s:String>
+
+	<!-- CS Constructor -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Shortcut/@EntryValue">csctor</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Description/@EntryValue">Constructor with null check</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Text/@EntryValue">/// &lt;summary&gt;
+/// Initializes a new instance of the &lt;see cref="$CLASSNAME$"/&gt; class.
+/// &lt;/summary&gt;
+/// &lt;param name="$PARAMNAME$"&gt;$PARAMDESC$.&lt;/param&gt;
+public $CLASSNAME$($TYPE$ $PARAMNAME$)
+{
+    this.$PARAMNAME$ = $PARAMNAME$ ?? throw new ArgumentNullException(nameof($PARAMNAME$));
+}$END$</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Field/=CLASSNAME/@EntryIndexedValue">CLASSNAME</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Field/=CLASSNAME/Expression/@EntryValue">typeName()</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Field/=TYPE/@EntryIndexedValue">TYPE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Field/=TYPE/Expression/@EntryValue">constant("IService")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Field/=PARAMNAME/@EntryIndexedValue">PARAMNAME</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Field/=PARAMNAME/Expression/@EntryValue">constant("service")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Field/=PARAMDESC/@EntryIndexedValue">PARAMDESC</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Constructor/Field/=PARAMDESC/Expression/@EntryValue">constant("The service instance")</s:String>
+
+	<!-- CS NotNull Parameter -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NotNull/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NotNull/Shortcut/@EntryValue">csnotnull</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NotNull/Description/@EntryValue">JetBrains NotNull parameter annotation</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NotNull/Text/@EntryValue">[NotNull] $TYPE$ $NAME$$END$</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NotNull/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NotNull/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NotNull/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NotNull/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NotNull/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NotNull/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NotNull/Field/=TYPE/@EntryIndexedValue">TYPE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NotNull/Field/=TYPE/Expression/@EntryValue">constant("string")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NotNull/Field/=NAME/@EntryIndexedValue">NAME</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NotNull/Field/=NAME/Expression/@EntryValue">constant("parameter")</s:String>
+
+	<!-- CS CanBeNull Parameter -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CanBeNull/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CanBeNull/Shortcut/@EntryValue">cscanbenull</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CanBeNull/Description/@EntryValue">JetBrains CanBeNull parameter annotation</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CanBeNull/Text/@EntryValue">[CanBeNull] $TYPE$? $NAME$$END$</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CanBeNull/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CanBeNull/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CanBeNull/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CanBeNull/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CanBeNull/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CanBeNull/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CanBeNull/Field/=TYPE/@EntryIndexedValue">TYPE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CanBeNull/Field/=TYPE/Expression/@EntryValue">constant("string")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CanBeNull/Field/=NAME/@EntryIndexedValue">NAME</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CanBeNull/Field/=NAME/Expression/@EntryValue">constant("parameter")</s:String>
+
+	<!-- CS Constructor with Annotations -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Shortcut/@EntryValue">csctorann</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Description/@EntryValue">Constructor with JetBrains NotNull and guard clause</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Text/@EntryValue">/// &lt;summary&gt;
+/// Initializes a new instance of the &lt;see cref="$CLASSNAME$"/&gt; class.
+/// &lt;/summary&gt;
+/// &lt;param name="$PARAMNAME$"&gt;$PARAMDESC$.&lt;/param&gt;
+public $CLASSNAME$([NotNull] $TYPE$ $PARAMNAME$)
+{
+    ArgumentNullException.ThrowIfNull($PARAMNAME$);
+    this.$PARAMNAME$ = $PARAMNAME$;
+}$END$</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Field/=CLASSNAME/@EntryIndexedValue">CLASSNAME</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Field/=CLASSNAME/Expression/@EntryValue">typeName()</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Field/=TYPE/@EntryIndexedValue">TYPE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Field/=TYPE/Expression/@EntryValue">constant("IService")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Field/=PARAMNAME/@EntryIndexedValue">PARAMNAME</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Field/=PARAMNAME/Expression/@EntryValue">constant("service")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Field/=PARAMDESC/@EntryIndexedValue">PARAMDESC</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_CtorAnn/Field/=PARAMDESC/Expression/@EntryValue">constant("The service instance")</s:String>
+
+	<!-- CS Pure Method -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Shortcut/@EntryValue">cspure</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Description/@EntryValue">JetBrains Pure method annotation</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Text/@EntryValue">/// &lt;summary&gt;
+/// $DESCRIPTION$
+/// &lt;/summary&gt;
+[Pure]
+public $RETURNTYPE$ $METHODNAME$($PARAMS$)
+{
+    return $EXPRESSION$;$END$
+}</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Field/=RETURNTYPE/@EntryIndexedValue">RETURNTYPE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Field/=RETURNTYPE/Expression/@EntryValue">constant("int")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Field/=METHODNAME/@EntryIndexedValue">METHODNAME</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Field/=METHODNAME/Expression/@EntryValue">constant("Calculate")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Field/=PARAMS/@EntryIndexedValue">PARAMS</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Field/=PARAMS/Expression/@EntryValue">constant("int x, int y")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Field/=EXPRESSION/@EntryIndexedValue">EXPRESSION</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Field/=EXPRESSION/Expression/@EntryValue">constant("x + y")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Field/=DESCRIPTION/@EntryIndexedValue">DESCRIPTION</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Pure/Field/=DESCRIPTION/Expression/@EntryValue">constant("Calculates the result.")</s:String>
+
+	<!-- CS MustUseReturnValue -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Shortcut/@EntryValue">csmustusereturn</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Description/@EntryValue">JetBrains MustUseReturnValue annotation</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Text/@EntryValue">[MustUseReturnValue("$MESSAGE$")]
+public $RETURNTYPE$ $METHODNAME$($PARAMS$)
+{
+    $END$
+}</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Field/=MESSAGE/@EntryIndexedValue">MESSAGE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Field/=MESSAGE/Expression/@EntryValue">constant("Result contains success/failure status")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Field/=RETURNTYPE/@EntryIndexedValue">RETURNTYPE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Field/=RETURNTYPE/Expression/@EntryValue">constant("Result&lt;T&gt;")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Field/=METHODNAME/@EntryIndexedValue">METHODNAME</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Field/=METHODNAME/Expression/@EntryValue">constant("MethodName")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Field/=PARAMS/@EntryIndexedValue">PARAMS</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_MustUseReturn/Field/=PARAMS/Expression/@EntryValue">constant("")</s:String>
+
+	<!-- CS ContractAnnotation Halt -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ContractHalt/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ContractHalt/Shortcut/@EntryValue">cscontracthalt</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ContractHalt/Description/@EntryValue">JetBrains ContractAnnotation for null =&gt; halt</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ContractHalt/Text/@EntryValue">[ContractAnnotation("$PARAM$:null =&gt; halt")]
+public static void ThrowIfNull([CanBeNull] $TYPE$? $PARAM$)
+{
+    ArgumentNullException.ThrowIfNull($PARAM$);
+}$END$</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ContractHalt/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ContractHalt/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ContractHalt/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ContractHalt/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ContractHalt/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ContractHalt/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ContractHalt/Field/=PARAM/@EntryIndexedValue">PARAM</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ContractHalt/Field/=PARAM/Expression/@EntryValue">constant("value")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ContractHalt/Field/=TYPE/@EntryIndexedValue">TYPE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ContractHalt/Field/=TYPE/Expression/@EntryValue">constant("object")</s:String>
+
+	<!-- CS ItemNotNull -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ItemNotNull/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ItemNotNull/Shortcut/@EntryValue">csitemnotnull</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ItemNotNull/Description/@EntryValue">JetBrains ItemNotNull collection annotation</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ItemNotNull/Text/@EntryValue">[ItemNotNull] $TYPE$ $NAME$$END$</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ItemNotNull/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ItemNotNull/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ItemNotNull/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ItemNotNull/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ItemNotNull/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ItemNotNull/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ItemNotNull/Field/=TYPE/@EntryIndexedValue">TYPE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ItemNotNull/Field/=TYPE/Expression/@EntryValue">constant("IEnumerable&lt;string&gt;")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ItemNotNull/Field/=NAME/@EntryIndexedValue">NAME</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ItemNotNull/Field/=NAME/Expression/@EntryValue">constant("items")</s:String>
+
+	<!-- CS NonNegativeValue -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NonNegative/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NonNegative/Shortcut/@EntryValue">csnonnegative</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NonNegative/Description/@EntryValue">JetBrains NonNegativeValue annotation</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NonNegative/Text/@EntryValue">[NonNegativeValue] $TYPE$ $NAME$$END$</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NonNegative/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NonNegative/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NonNegative/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NonNegative/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NonNegative/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NonNegative/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NonNegative/Field/=TYPE/@EntryIndexedValue">TYPE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NonNegative/Field/=TYPE/Expression/@EntryValue">constant("int")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NonNegative/Field/=NAME/@EntryIndexedValue">NAME</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_NonNegative/Field/=NAME/Expression/@EntryValue">constant("value")</s:String>
+
+	<!-- CS ValueRange -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Shortcut/@EntryValue">csvaluerange</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Description/@EntryValue">JetBrains ValueRange annotation</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Text/@EntryValue">[ValueRange($MIN$, $MAX$)] $TYPE$ $NAME$$END$</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Field/=MIN/@EntryIndexedValue">MIN</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Field/=MIN/Expression/@EntryValue">constant("0")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Field/=MAX/@EntryIndexedValue">MAX</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Field/=MAX/Expression/@EntryValue">constant("100")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Field/=TYPE/@EntryIndexedValue">TYPE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Field/=TYPE/Expression/@EntryValue">constant("int")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Field/=NAME/@EntryIndexedValue">NAME</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_ValueRange/Field/=NAME/Expression/@EntryValue">constant("percentage")</s:String>
+
+	<!-- CS Async Method -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Shortcut/@EntryValue">csasync</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Description/@EntryValue">Async method with documentation</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Text/@EntryValue">/// &lt;summary&gt;
+/// $DESCRIPTION$
+/// &lt;/summary&gt;
+/// &lt;param name="cancellationToken"&gt;The cancellation token.&lt;/param&gt;
+/// &lt;returns&gt;$RETURNS$&lt;/returns&gt;
+public async Task&lt;$RETURNTYPE$&gt; $METHODNAME$Async(CancellationToken cancellationToken)
+{
+    $END$
+}</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Field/=RETURNTYPE/@EntryIndexedValue">RETURNTYPE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Field/=RETURNTYPE/Expression/@EntryValue">constant("Result")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Field/=METHODNAME/@EntryIndexedValue">METHODNAME</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Field/=METHODNAME/Expression/@EntryValue">constant("MethodName")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Field/=DESCRIPTION/@EntryIndexedValue">DESCRIPTION</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Field/=DESCRIPTION/Expression/@EntryValue">constant("Description of the method.")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Field/=RETURNS/@EntryIndexedValue">RETURNS</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Async/Field/=RETURNS/Expression/@EntryValue">constant("The result.")</s:String>
+
+	<!-- CS Await ConfigureAwait -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Await/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Await/Shortcut/@EntryValue">csawait</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Await/Description/@EntryValue">Await with ConfigureAwait(false)</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Await/Text/@EntryValue">await $EXPRESSION$
+    .ConfigureAwait(false);$END$</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Await/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Await/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Await/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Await/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Await/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Await/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpStatement</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Await/Field/=EXPRESSION/@EntryIndexedValue">EXPRESSION</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Await/Field/=EXPRESSION/Expression/@EntryValue">constant("expression")</s:String>
+
+	<!-- CS Fact Test -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Shortcut/@EntryValue">csfact</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Description/@EntryValue">xUnit Fact test method</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Text/@EntryValue">/// &lt;summary&gt;
+/// $DESCRIPTION$
+/// &lt;/summary&gt;
+[Fact]
+public async Task $METHOD$_$SCENARIO$_$EXPECTED$()
+{
+    // Arrange
+    $END$
+
+    // Act
+    var result = await this.sut.$METHOD$Async(CancellationToken.None);
+
+    // Assert
+    result.Should().NotBeNull();
+}</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpTypeMember</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Field/=METHOD/@EntryIndexedValue">METHOD</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Field/=METHOD/Expression/@EntryValue">constant("MethodName")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Field/=SCENARIO/@EntryIndexedValue">SCENARIO</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Field/=SCENARIO/Expression/@EntryValue">constant("Scenario")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Field/=EXPECTED/@EntryIndexedValue">EXPECTED</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Field/=EXPECTED/Expression/@EntryValue">constant("ExpectedResult")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Field/=DESCRIPTION/@EntryIndexedValue">DESCRIPTION</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Fact/Field/=DESCRIPTION/Expression/@EntryValue">constant("Test description.")</s:String>
+
+	<!-- CS Log Information -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogInfo/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogInfo/Shortcut/@EntryValue">csloginfo</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogInfo/Description/@EntryValue">Serilog LogInformation</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogInfo/Text/@EntryValue">this.logger.LogInformation(
+    "$MESSAGE$",
+    $VALUE$);$END$</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogInfo/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogInfo/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogInfo/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogInfo/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogInfo/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogInfo/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpStatement</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogInfo/Field/=MESSAGE/@EntryIndexedValue">MESSAGE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogInfo/Field/=MESSAGE/Expression/@EntryValue">constant("Message with {Placeholder}")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogInfo/Field/=VALUE/@EntryIndexedValue">VALUE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogInfo/Field/=VALUE/Expression/@EntryValue">constant("value")</s:String>
+
+	<!-- CS Log Error -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/Shortcut/@EntryValue">cslogerror</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/Description/@EntryValue">Serilog LogError with exception</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/Text/@EntryValue">this.logger.LogError(
+    $EXCEPTION$,
+    "$MESSAGE$",
+    $VALUE$);$END$</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpStatement</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/Field/=EXCEPTION/@EntryIndexedValue">EXCEPTION</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/Field/=EXCEPTION/Expression/@EntryValue">constant("ex")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/Field/=MESSAGE/@EntryIndexedValue">MESSAGE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/Field/=MESSAGE/Expression/@EntryValue">constant("Error message with {Placeholder}")</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/Field/=VALUE/@EntryIndexedValue">VALUE</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_LogError/Field/=VALUE/Expression/@EntryValue">constant("value")</s:String>
+
+	<!-- CS Copyright Header -->
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Copyright/@KeyIndexDefined">True</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Copyright/Shortcut/@EntryValue">cscopyright</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Copyright/Description/@EntryValue">CS Copyright header</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Copyright/Text/@EntryValue">// &lt;copyright file="$FILENAME$" company="{CompanyName}"&gt;
+// © {CompanyName}
+// &lt;/copyright&gt;
+$END$</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Copyright/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Copyright/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Copyright/Categories/=CodingStandards/@EntryIndexedValue">CodingStandards</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Copyright/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Copyright/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Copyright/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Copyright/Field/=FILENAME/@EntryIndexedValue">FILENAME</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=CS_Copyright/Field/=FILENAME/Expression/@EntryValue">getFileName()</s:String>
+
+</wpf:ResourceDictionary>

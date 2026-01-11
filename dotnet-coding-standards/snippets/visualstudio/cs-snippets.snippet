@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS Class</Title>
+      <Shortcut>csclass</Shortcut>
+      <Description>CS Class with copyright header and documentation</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>classname</ID>
+          <ToolTip>Class name</ToolTip>
+          <Default>ClassName</Default>
+        </Literal>
+        <Literal>
+          <ID>namespace</ID>
+          <ToolTip>Namespace</ToolTip>
+          <Default>CS.ProjectName</Default>
+        </Literal>
+        <Literal>
+          <ID>description</ID>
+          <ToolTip>Class description</ToolTip>
+          <Default>Description of the class.</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[// <copyright file="$classname$.cs" company="{CompanyName}">
+// © {CompanyName}
+// </copyright>
+
+namespace $namespace$;
+
+/// <summary>
+/// $description$
+/// </summary>
+public class $classname$
+{
+    $end$
+}]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS Interface</Title>
+      <Shortcut>csinterface</Shortcut>
+      <Description>CS Interface with copyright header and documentation</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>Interface name (without I prefix)</ToolTip>
+          <Default>InterfaceName</Default>
+        </Literal>
+        <Literal>
+          <ID>namespace</ID>
+          <ToolTip>Namespace</ToolTip>
+          <Default>CS.ProjectName</Default>
+        </Literal>
+        <Literal>
+          <ID>description</ID>
+          <ToolTip>Interface description</ToolTip>
+          <Default>Description of the interface.</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[// <copyright file="I$name$.cs" company="{CompanyName}">
+// © {CompanyName}
+// </copyright>
+
+namespace $namespace$;
+
+/// <summary>
+/// $description$
+/// </summary>
+public interface I$name$
+{
+    $end$
+}]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS Service</Title>
+      <Shortcut>csservice</Shortcut>
+      <Description>CS Service class with DI and logging</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>Service name</ToolTip>
+          <Default>ServiceName</Default>
+        </Literal>
+        <Literal>
+          <ID>namespace</ID>
+          <ToolTip>Namespace</ToolTip>
+          <Default>CS.ProjectName.Application.Services</Default>
+        </Literal>
+        <Literal>
+          <ID>description</ID>
+          <ToolTip>Service description</ToolTip>
+          <Default>Description of the service.</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[// <copyright file="$name$.cs" company="{CompanyName}">
+// © {CompanyName}
+// </copyright>
+
+namespace $namespace$;
+
+using Microsoft.Extensions.Logging;
+
+/// <summary>
+/// $description$
+/// </summary>
+public class $name$ : I$name$
+{
+    private readonly ILogger<$name$> logger;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="$name$"/> class.
+    /// </summary>
+    /// <param name="logger">The logger instance.</param>
+    public $name$(ILogger<$name$> logger)
+    {
+        this.logger = logger ?? throw new ArgumentNullException(nameof(logger));
+    }
+
+    $end$
+}]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS Constructor</Title>
+      <Shortcut>csctor</Shortcut>
+      <Description>Constructor with null check</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>classname</ID>
+          <ToolTip>Class name</ToolTip>
+          <Default>ClassName</Default>
+        </Literal>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Parameter type</ToolTip>
+          <Default>IService</Default>
+        </Literal>
+        <Literal>
+          <ID>param</ID>
+          <ToolTip>Parameter name</ToolTip>
+          <Default>service</Default>
+        </Literal>
+        <Literal>
+          <ID>paramdesc</ID>
+          <ToolTip>Parameter description</ToolTip>
+          <Default>The service instance</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[/// <summary>
+/// Initializes a new instance of the <see cref="$classname$"/> class.
+/// </summary>
+/// <param name="$param$">$paramdesc$.</param>
+public $classname$($type$ $param$)
+{
+    this.$param$ = $param$ ?? throw new ArgumentNullException(nameof($param$));
+}$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS Async Method</Title>
+      <Shortcut>csasync</Shortcut>
+      <Description>Async method with documentation</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>returntype</ID>
+          <ToolTip>Return type</ToolTip>
+          <Default>Result</Default>
+        </Literal>
+        <Literal>
+          <ID>methodname</ID>
+          <ToolTip>Method name</ToolTip>
+          <Default>MethodName</Default>
+        </Literal>
+        <Literal>
+          <ID>description</ID>
+          <ToolTip>Method description</ToolTip>
+          <Default>Description of the method.</Default>
+        </Literal>
+        <Literal>
+          <ID>returndesc</ID>
+          <ToolTip>Return value description</ToolTip>
+          <Default>The result.</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[/// <summary>
+/// $description$
+/// </summary>
+/// <param name="cancellationToken">The cancellation token.</param>
+/// <returns>$returndesc$</returns>
+public async Task<$returntype$> $methodname$Async(CancellationToken cancellationToken)
+{
+    $end$
+}]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS Await ConfigureAwait</Title>
+      <Shortcut>csawait</Shortcut>
+      <Description>Await with ConfigureAwait(false)</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>expression</ID>
+          <ToolTip>Async expression</ToolTip>
+          <Default>expression</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[await $expression$
+    .ConfigureAwait(false);$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS Unit Test</Title>
+      <Shortcut>csfact</Shortcut>
+      <Description>xUnit Fact test method</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>method</ID>
+          <ToolTip>Method being tested</ToolTip>
+          <Default>MethodName</Default>
+        </Literal>
+        <Literal>
+          <ID>scenario</ID>
+          <ToolTip>Test scenario</ToolTip>
+          <Default>Scenario</Default>
+        </Literal>
+        <Literal>
+          <ID>expected</ID>
+          <ToolTip>Expected result</ToolTip>
+          <Default>ExpectedResult</Default>
+        </Literal>
+        <Literal>
+          <ID>description</ID>
+          <ToolTip>Test description</ToolTip>
+          <Default>Test description.</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[/// <summary>
+/// $description$
+/// </summary>
+[Fact]
+public async Task $method$_$scenario$_$expected$()
+{
+    // Arrange
+    $end$
+
+    // Act
+    var result = await this.sut.$method$Async(CancellationToken.None);
+
+    // Assert
+    result.Should().NotBeNull();
+}]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS Log Information</Title>
+      <Shortcut>csloginfo</Shortcut>
+      <Description>Serilog LogInformation</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>message</ID>
+          <ToolTip>Log message template</ToolTip>
+          <Default>Message with {Placeholder}</Default>
+        </Literal>
+        <Literal>
+          <ID>value</ID>
+          <ToolTip>Value for placeholder</ToolTip>
+          <Default>value</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[this.logger.LogInformation(
+    "$message$",
+    $value$);$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS Log Error</Title>
+      <Shortcut>cslogerror</Shortcut>
+      <Description>Serilog LogError with exception</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>exception</ID>
+          <ToolTip>Exception variable</ToolTip>
+          <Default>ex</Default>
+        </Literal>
+        <Literal>
+          <ID>message</ID>
+          <ToolTip>Error message template</ToolTip>
+          <Default>Error message with {Placeholder}</Default>
+        </Literal>
+        <Literal>
+          <ID>value</ID>
+          <ToolTip>Value for placeholder</ToolTip>
+          <Default>value</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[this.logger.LogError(
+    $exception$,
+    "$message$",
+    $value$);$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS Copyright Header</Title>
+      <Shortcut>cscopyright</Shortcut>
+      <Description>CS Copyright header</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>filename</ID>
+          <ToolTip>File name</ToolTip>
+          <Default>FileName.cs</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[// <copyright file="$filename$" company="{CompanyName}">
+// © {CompanyName}
+// </copyright>
+$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS NotNull Parameter</Title>
+      <Shortcut>csnotnull</Shortcut>
+      <Description>JetBrains NotNull parameter annotation</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Parameter type</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>Parameter name</ToolTip>
+          <Default>parameter</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[[NotNull] $type$ $name$$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS CanBeNull Parameter</Title>
+      <Shortcut>cscanbenull</Shortcut>
+      <Description>JetBrains CanBeNull parameter annotation</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Parameter type</ToolTip>
+          <Default>string</Default>
+        </Literal>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>Parameter name</ToolTip>
+          <Default>parameter</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[[CanBeNull] $type$? $name$$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS Constructor with Annotations</Title>
+      <Shortcut>csctorann</Shortcut>
+      <Description>Constructor with JetBrains NotNull and guard clause</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>classname</ID>
+          <ToolTip>Class name</ToolTip>
+          <Default>ClassName</Default>
+        </Literal>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Parameter type</ToolTip>
+          <Default>IService</Default>
+        </Literal>
+        <Literal>
+          <ID>param</ID>
+          <ToolTip>Parameter name</ToolTip>
+          <Default>service</Default>
+        </Literal>
+        <Literal>
+          <ID>paramdesc</ID>
+          <ToolTip>Parameter description</ToolTip>
+          <Default>The service instance</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[/// <summary>
+/// Initializes a new instance of the <see cref="$classname$"/> class.
+/// </summary>
+/// <param name="$param$">$paramdesc$.</param>
+public $classname$([NotNull] $type$ $param$)
+{
+    ArgumentNullException.ThrowIfNull($param$);
+    this.$param$ = $param$;
+}$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS Pure Method</Title>
+      <Shortcut>cspure</Shortcut>
+      <Description>JetBrains Pure method annotation</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>returntype</ID>
+          <ToolTip>Return type</ToolTip>
+          <Default>int</Default>
+        </Literal>
+        <Literal>
+          <ID>methodname</ID>
+          <ToolTip>Method name</ToolTip>
+          <Default>Calculate</Default>
+        </Literal>
+        <Literal>
+          <ID>description</ID>
+          <ToolTip>Method description</ToolTip>
+          <Default>Calculates the result.</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[/// <summary>
+/// $description$
+/// </summary>
+[Pure]
+public $returntype$ $methodname$(int x, int y)
+{
+    return x + y;$end$
+}]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS ItemNotNull</Title>
+      <Shortcut>csitemnotnull</Shortcut>
+      <Description>JetBrains ItemNotNull collection annotation</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Collection type</ToolTip>
+          <Default>IEnumerable&lt;string&gt;</Default>
+        </Literal>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>Parameter name</ToolTip>
+          <Default>items</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[[ItemNotNull] $type$ $name$$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS NonNegativeValue</Title>
+      <Shortcut>csnonnegative</Shortcut>
+      <Description>JetBrains NonNegativeValue annotation</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Numeric type</ToolTip>
+          <Default>int</Default>
+        </Literal>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>Parameter name</ToolTip>
+          <Default>value</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[[NonNegativeValue] $type$ $name$$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>CS ValueRange</Title>
+      <Shortcut>csvaluerange</Shortcut>
+      <Description>JetBrains ValueRange annotation</Description>
+      <Author>{CompanyName}</Author>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>min</ID>
+          <ToolTip>Minimum value</ToolTip>
+          <Default>0</Default>
+        </Literal>
+        <Literal>
+          <ID>max</ID>
+          <ToolTip>Maximum value</ToolTip>
+          <Default>100</Default>
+        </Literal>
+        <Literal>
+          <ID>type</ID>
+          <ToolTip>Numeric type</ToolTip>
+          <Default>int</Default>
+        </Literal>
+        <Literal>
+          <ID>name</ID>
+          <ToolTip>Parameter name</ToolTip>
+          <Default>percentage</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[[ValueRange($min$, $max$)] $type$ $name$$end$]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+
+</CodeSnippets>

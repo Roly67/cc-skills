@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat Code Coverage">
+        <Configuration>
+          <!-- Output formats -->
+          <Format>cobertura,opencover</Format>
+          
+          <!-- Exclude from coverage -->
+          <Exclude>
+            [*]*.Program,
+            [*]*.Startup,
+            [*]*Migrations*,
+            [*]*.DTOs.*,
+            [*]*.Models.*,
+            [*]*.Configuration.*,
+            [*]*.Exceptions.*
+          </Exclude>
+          
+          <!-- Exclude by attribute -->
+          <ExcludeByAttribute>
+            Obsolete,
+            GeneratedCodeAttribute,
+            CompilerGeneratedAttribute,
+            ExcludeFromCodeCoverage
+          </ExcludeByAttribute>
+          
+          <!-- Exclude by file pattern -->
+          <ExcludeByFile>
+            **/Migrations/*.cs,
+            **/*.Designer.cs
+          </ExcludeByFile>
+          
+          <!-- Other settings -->
+          <SingleHit>false</SingleHit>
+          <UseSourceLink>true</UseSourceLink>
+          <IncludeTestAssembly>false</IncludeTestAssembly>
+          <SkipAutoProps>true</SkipAutoProps>
+          <DeterministicReport>true</DeterministicReport>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+  
+  <InProcDataCollectionRunSettings>
+    <InProcDataCollectors>
+      <InProcDataCollector 
+        assemblyQualifiedName="Coverlet.Collector.DataCollection.CoverletInProcDataCollector, coverlet.collector, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null"
+        friendlyName="XPlat Code Coverage"
+        enabled="True"
+        codebase="coverlet.collector.dll" />
+    </InProcDataCollectors>
+  </InProcDataCollectionRunSettings>
+</RunSettings>

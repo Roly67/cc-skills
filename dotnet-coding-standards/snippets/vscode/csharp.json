@@ -1,0 +1,521 @@
+{
+  "CS Class": {
+    "prefix": "csclass",
+    "body": [
+      "// <copyright file=\"${1:ClassName}.cs\" company=\"{CompanyName}\">",
+      "// © {CompanyName}",
+      "// </copyright>",
+      "",
+      "namespace ${2:CS.ProjectName};",
+      "",
+      "/// <summary>",
+      "/// ${3:Description of the class.}",
+      "/// </summary>",
+      "public class ${1:ClassName}",
+      "{",
+      "    $0",
+      "}"
+    ],
+    "description": "CS Class with copyright header and documentation"
+  },
+  "CS Interface": {
+    "prefix": "csinterface",
+    "body": [
+      "// <copyright file=\"I${1:InterfaceName}.cs\" company=\"{CompanyName}\">",
+      "// © {CompanyName}",
+      "// </copyright>",
+      "",
+      "namespace ${2:CS.ProjectName};",
+      "",
+      "/// <summary>",
+      "/// ${3:Description of the interface.}",
+      "/// </summary>",
+      "public interface I${1:InterfaceName}",
+      "{",
+      "    $0",
+      "}"
+    ],
+    "description": "CS Interface with copyright header and documentation"
+  },
+  "CS Service": {
+    "prefix": "csservice",
+    "body": [
+      "// <copyright file=\"${1:ServiceName}.cs\" company=\"{CompanyName}\">",
+      "// © {CompanyName}",
+      "// </copyright>",
+      "",
+      "namespace ${2:CS.ProjectName.Application.Services};",
+      "",
+      "using Microsoft.Extensions.Logging;",
+      "",
+      "/// <summary>",
+      "/// ${3:Description of the service.}",
+      "/// </summary>",
+      "public class ${1:ServiceName} : I${1:ServiceName}",
+      "{",
+      "    private readonly ILogger<${1:ServiceName}> logger;",
+      "",
+      "    /// <summary>",
+      "    /// Initializes a new instance of the <see cref=\"${1:ServiceName}\"/> class.",
+      "    /// </summary>",
+      "    /// <param name=\"logger\">The logger instance.</param>",
+      "    public ${1:ServiceName}(ILogger<${1:ServiceName}> logger)",
+      "    {",
+      "        this.logger = logger ?? throw new ArgumentNullException(nameof(logger));",
+      "    }",
+      "",
+      "    $0",
+      "}"
+    ],
+    "description": "CS Service class with DI and logging"
+  },
+  "CS Controller": {
+    "prefix": "cscontroller",
+    "body": [
+      "// <copyright file=\"${1:Name}Controller.cs\" company=\"{CompanyName}\">",
+      "// © {CompanyName}",
+      "// </copyright>",
+      "",
+      "namespace ${2:CS.ProjectName.Api.Controllers.V1};",
+      "",
+      "using Microsoft.AspNetCore.Authorization;",
+      "using Microsoft.AspNetCore.Mvc;",
+      "",
+      "/// <summary>",
+      "/// ${3:Description of the controller.}",
+      "/// </summary>",
+      "[Authorize]",
+      "[ApiController]",
+      "[Route(\"api/v1/[controller]\")]",
+      "[Produces(\"application/json\")]",
+      "public class ${1:Name}Controller : ControllerBase",
+      "{",
+      "    private readonly ILogger<${1:Name}Controller> logger;",
+      "    private readonly I${1:Name}Service service;",
+      "",
+      "    /// <summary>",
+      "    /// Initializes a new instance of the <see cref=\"${1:Name}Controller\"/> class.",
+      "    /// </summary>",
+      "    /// <param name=\"logger\">The logger instance.</param>",
+      "    /// <param name=\"service\">The ${1:Name} service.</param>",
+      "    public ${1:Name}Controller(",
+      "        ILogger<${1:Name}Controller> logger,",
+      "        I${1:Name}Service service)",
+      "    {",
+      "        this.logger = logger ?? throw new ArgumentNullException(nameof(logger));",
+      "        this.service = service ?? throw new ArgumentNullException(nameof(service));",
+      "    }",
+      "",
+      "    $0",
+      "}"
+    ],
+    "description": "CS API Controller with DI"
+  },
+  "CS Repository": {
+    "prefix": "csrepository",
+    "body": [
+      "// <copyright file=\"${1:Entity}Repository.cs\" company=\"{CompanyName}\">",
+      "// © {CompanyName}",
+      "// </copyright>",
+      "",
+      "namespace ${2:CS.ProjectName.Infrastructure.Persistence};",
+      "",
+      "using Microsoft.EntityFrameworkCore;",
+      "using Microsoft.Extensions.Logging;",
+      "",
+      "/// <summary>",
+      "/// Repository for ${1:Entity} data access.",
+      "/// </summary>",
+      "public class ${1:Entity}Repository : I${1:Entity}Repository",
+      "{",
+      "    private readonly AppDbContext context;",
+      "    private readonly ILogger<${1:Entity}Repository> logger;",
+      "",
+      "    /// <summary>",
+      "    /// Initializes a new instance of the <see cref=\"${1:Entity}Repository\"/> class.",
+      "    /// </summary>",
+      "    /// <param name=\"context\">The database context.</param>",
+      "    /// <param name=\"logger\">The logger instance.</param>",
+      "    public ${1:Entity}Repository(AppDbContext context, ILogger<${1:Entity}Repository> logger)",
+      "    {",
+      "        this.context = context ?? throw new ArgumentNullException(nameof(context));",
+      "        this.logger = logger ?? throw new ArgumentNullException(nameof(logger));",
+      "    }",
+      "",
+      "    /// <inheritdoc/>",
+      "    public async Task<${1:Entity}?> GetByIdAsync(string id, CancellationToken cancellationToken)",
+      "    {",
+      "        return await this.context.${1:Entity}s",
+      "            .AsNoTracking()",
+      "            .FirstOrDefaultAsync(e => e.Id == id, cancellationToken)",
+      "            .ConfigureAwait(false);",
+      "    }",
+      "",
+      "    $0",
+      "}"
+    ],
+    "description": "CS Repository with EF Core"
+  },
+  "CS Async Method": {
+    "prefix": "csasync",
+    "body": [
+      "/// <summary>",
+      "/// ${1:Description of the method.}",
+      "/// </summary>",
+      "/// <param name=\"cancellationToken\">The cancellation token.</param>",
+      "/// <returns>${2:Description of return value.}</returns>",
+      "public async Task<${3:ReturnType}> ${4:MethodName}Async(CancellationToken cancellationToken)",
+      "{",
+      "    $0",
+      "}"
+    ],
+    "description": "CS Async method with documentation"
+  },
+  "CS Async Method with ConfigureAwait": {
+    "prefix": "csawait",
+    "body": [
+      "await ${1:expression}",
+      "    .ConfigureAwait(false);"
+    ],
+    "description": "Await with ConfigureAwait(false)"
+  },
+  "CS Constructor": {
+    "prefix": "csctor",
+    "body": [
+      "/// <summary>",
+      "/// Initializes a new instance of the <see cref=\"${1:ClassName}\"/> class.",
+      "/// </summary>",
+      "/// <param name=\"${2:paramName}\">The ${3:parameter description}.</param>",
+      "public ${1:ClassName}(${4:IService} ${2:paramName})",
+      "{",
+      "    this.${2:paramName} = ${2:paramName} ?? throw new ArgumentNullException(nameof(${2:paramName}));",
+      "}"
+    ],
+    "description": "CS Constructor with null check"
+  },
+  "CS Unit Test Class": {
+    "prefix": "cstest",
+    "body": [
+      "// <copyright file=\"${1:ClassName}Tests.cs\" company=\"{CompanyName}\">",
+      "// © {CompanyName}",
+      "// </copyright>",
+      "",
+      "namespace ${2:CS.ProjectName.UnitTests};",
+      "",
+      "using FluentAssertions;",
+      "",
+      "using Moq;",
+      "",
+      "using Xunit;",
+      "",
+      "/// <summary>",
+      "/// Unit tests for <see cref=\"${1:ClassName}\"/>.",
+      "/// </summary>",
+      "public class ${1:ClassName}Tests",
+      "{",
+      "    private readonly Mock<ILogger<${1:ClassName}>> loggerMock;",
+      "    private readonly ${1:ClassName} sut;",
+      "",
+      "    /// <summary>",
+      "    /// Initializes a new instance of the <see cref=\"${1:ClassName}Tests\"/> class.",
+      "    /// </summary>",
+      "    public ${1:ClassName}Tests()",
+      "    {",
+      "        this.loggerMock = new Mock<ILogger<${1:ClassName}>>();",
+      "        this.sut = new ${1:ClassName}(this.loggerMock.Object);",
+      "    }",
+      "",
+      "    $0",
+      "}"
+    ],
+    "description": "CS Unit Test Class with setup"
+  },
+  "CS Unit Test Method": {
+    "prefix": "csfact",
+    "body": [
+      "/// <summary>",
+      "/// ${1:Test description}.",
+      "/// </summary>",
+      "[Fact]",
+      "public async Task ${2:MethodName}_${3:Scenario}_${4:ExpectedResult}()",
+      "{",
+      "    // Arrange",
+      "    $0",
+      "",
+      "    // Act",
+      "    var result = await this.sut.${2:MethodName}Async(CancellationToken.None);",
+      "",
+      "    // Assert",
+      "    result.Should().NotBeNull();",
+      "}"
+    ],
+    "description": "CS xUnit Fact test method"
+  },
+  "CS Theory Test": {
+    "prefix": "cstheory",
+    "body": [
+      "/// <summary>",
+      "/// ${1:Test description}.",
+      "/// </summary>",
+      "/// <param name=\"${2:param}\">The ${3:parameter description}.</param>",
+      "/// <param name=\"expected\">The expected result.</param>",
+      "[Theory]",
+      "[InlineData(${4:\"value1\"}, ${5:true})]",
+      "[InlineData(${6:\"value2\"}, ${7:false})]",
+      "public void ${8:MethodName}_${9:Scenario}_ReturnsExpected(${10:string} ${2:param}, bool expected)",
+      "{",
+      "    // Arrange & Act",
+      "    var result = this.sut.${8:MethodName}(${2:param});",
+      "",
+      "    // Assert",
+      "    result.Should().Be(expected);",
+      "}"
+    ],
+    "description": "CS xUnit Theory test method"
+  },
+  "CS DTO": {
+    "prefix": "csdto",
+    "body": [
+      "// <copyright file=\"${1:Name}Request.cs\" company=\"{CompanyName}\">",
+      "// © {CompanyName}",
+      "// </copyright>",
+      "",
+      "namespace ${2:CS.ProjectName.Api.DTOs.V1};",
+      "",
+      "using System.ComponentModel.DataAnnotations;",
+      "",
+      "/// <summary>",
+      "/// ${3:Description of the DTO.}",
+      "/// </summary>",
+      "public class ${1:Name}Request",
+      "{",
+      "    /// <summary>",
+      "    /// Gets or sets the ${4:property description}.",
+      "    /// </summary>",
+      "    [Required]",
+      "    public string ${5:PropertyName} { get; set; } = string.Empty;",
+      "",
+      "    $0",
+      "}"
+    ],
+    "description": "CS DTO/Request class"
+  },
+  "CS Exception": {
+    "prefix": "csexception",
+    "body": [
+      "// <copyright file=\"${1:Name}Exception.cs\" company=\"{CompanyName}\">",
+      "// © {CompanyName}",
+      "// </copyright>",
+      "",
+      "namespace ${2:CS.ProjectName.Domain.Exceptions};",
+      "",
+      "/// <summary>",
+      "/// ${3:Description of the exception.}",
+      "/// </summary>",
+      "public class ${1:Name}Exception : Exception",
+      "{",
+      "    /// <summary>",
+      "    /// Initializes a new instance of the <see cref=\"${1:Name}Exception\"/> class.",
+      "    /// </summary>",
+      "    /// <param name=\"message\">The exception message.</param>",
+      "    public ${1:Name}Exception(string message)",
+      "        : base(message)",
+      "    {",
+      "    }",
+      "",
+      "    /// <summary>",
+      "    /// Initializes a new instance of the <see cref=\"${1:Name}Exception\"/> class.",
+      "    /// </summary>",
+      "    /// <param name=\"message\">The exception message.</param>",
+      "    /// <param name=\"innerException\">The inner exception.</param>",
+      "    public ${1:Name}Exception(string message, Exception innerException)",
+      "        : base(message, innerException)",
+      "    {",
+      "    }",
+      "}"
+    ],
+    "description": "CS Custom Exception class"
+  },
+  "CS Log Information": {
+    "prefix": "csloginfo",
+    "body": [
+      "this.logger.LogInformation(",
+      "    \"${1:Message template with {Placeholder}}\",",
+      "    ${2:value});"
+    ],
+    "description": "Serilog LogInformation"
+  },
+  "CS Log Error": {
+    "prefix": "cslogerror",
+    "body": [
+      "this.logger.LogError(",
+      "    ${1:ex},",
+      "    \"${2:Error message with {Placeholder}}\",",
+      "    ${3:value});"
+    ],
+    "description": "Serilog LogError with exception"
+  },
+  "CS Worker": {
+    "prefix": "csworker",
+    "body": [
+      "// <copyright file=\"${1:Name}Worker.cs\" company=\"{CompanyName}\">",
+      "// © {CompanyName}",
+      "// </copyright>",
+      "",
+      "namespace ${2:CS.ProjectName.Worker.Workers};",
+      "",
+      "using Microsoft.Extensions.Hosting;",
+      "using Microsoft.Extensions.Logging;",
+      "",
+      "/// <summary>",
+      "/// Background worker for ${3:description}.",
+      "/// </summary>",
+      "public class ${1:Name}Worker : BackgroundService",
+      "{",
+      "    private readonly IServiceScopeFactory scopeFactory;",
+      "    private readonly ILogger<${1:Name}Worker> logger;",
+      "",
+      "    /// <summary>",
+      "    /// Initializes a new instance of the <see cref=\"${1:Name}Worker\"/> class.",
+      "    /// </summary>",
+      "    /// <param name=\"scopeFactory\">The service scope factory.</param>",
+      "    /// <param name=\"logger\">The logger instance.</param>",
+      "    public ${1:Name}Worker(",
+      "        IServiceScopeFactory scopeFactory,",
+      "        ILogger<${1:Name}Worker> logger)",
+      "    {",
+      "        this.scopeFactory = scopeFactory ?? throw new ArgumentNullException(nameof(scopeFactory));",
+      "        this.logger = logger ?? throw new ArgumentNullException(nameof(logger));",
+      "    }",
+      "",
+      "    /// <inheritdoc/>",
+      "    protected override async Task ExecuteAsync(CancellationToken stoppingToken)",
+      "    {",
+      "        this.logger.LogInformation(\"${1:Name}Worker starting\");",
+      "",
+      "        while (!stoppingToken.IsCancellationRequested)",
+      "        {",
+      "            try",
+      "            {",
+      "                await this.ProcessAsync(stoppingToken);",
+      "            }",
+      "            catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested)",
+      "            {",
+      "                break;",
+      "            }",
+      "            catch (Exception ex)",
+      "            {",
+      "                this.logger.LogError(ex, \"Error in ${1:Name}Worker\");",
+      "            }",
+      "",
+      "            await Task.Delay(TimeSpan.FromSeconds(30), stoppingToken);",
+      "        }",
+      "",
+      "        this.logger.LogInformation(\"${1:Name}Worker stopped\");",
+      "    }",
+      "",
+      "    private async Task ProcessAsync(CancellationToken cancellationToken)",
+      "    {",
+      "        await using var scope = this.scopeFactory.CreateAsyncScope();",
+      "        $0",
+      "    }",
+      "}"
+    ],
+    "description": "CS BackgroundService Worker"
+  },
+  "CS Copyright Header": {
+    "prefix": "cscopyright",
+    "body": [
+      "// <copyright file=\"${TM_FILENAME}\" company=\"{CompanyName}\">",
+      "// © {CompanyName}",
+      "// </copyright>"
+    ],
+    "description": "CS Copyright header"
+  },
+  "CS NotNull Parameter": {
+    "prefix": "csnotnull",
+    "body": [
+      "[NotNull] ${1:string} ${2:parameter}"
+    ],
+    "description": "JetBrains NotNull parameter annotation"
+  },
+  "CS CanBeNull Parameter": {
+    "prefix": "cscanbenull",
+    "body": [
+      "[CanBeNull] ${1:string}? ${2:parameter}"
+    ],
+    "description": "JetBrains CanBeNull parameter annotation"
+  },
+  "CS Constructor with Annotations": {
+    "prefix": "csctorann",
+    "body": [
+      "/// <summary>",
+      "/// Initializes a new instance of the <see cref=\"${1:ClassName}\"/> class.",
+      "/// </summary>",
+      "/// <param name=\"${2:paramName}\">The ${3:parameter description}.</param>",
+      "public ${1:ClassName}([NotNull] ${4:IService} ${2:paramName})",
+      "{",
+      "    ArgumentNullException.ThrowIfNull(${2:paramName});",
+      "    this.${2:paramName} = ${2:paramName};",
+      "}"
+    ],
+    "description": "CS Constructor with JetBrains NotNull and guard clause"
+  },
+  "CS Pure Method": {
+    "prefix": "cspure",
+    "body": [
+      "/// <summary>",
+      "/// ${1:Description of the pure method.}",
+      "/// </summary>",
+      "[Pure]",
+      "public ${2:int} ${3:Calculate}(${4:int x, int y})",
+      "{",
+      "    return ${5:x + y};",
+      "}"
+    ],
+    "description": "JetBrains Pure method annotation"
+  },
+  "CS MustUseReturnValue": {
+    "prefix": "csmustusereturn",
+    "body": [
+      "[MustUseReturnValue(\"${1:Result contains success/failure status}\")]",
+      "public ${2:Result<T>} ${3:MethodName}(${4:parameters})",
+      "{",
+      "    $0",
+      "}"
+    ],
+    "description": "JetBrains MustUseReturnValue annotation"
+  },
+  "CS ContractAnnotation Halt": {
+    "prefix": "cscontracthalt",
+    "body": [
+      "[ContractAnnotation(\"${1:value}:null => halt\")]",
+      "public static void ThrowIfNull([CanBeNull] ${2:object}? ${1:value})",
+      "{",
+      "    ArgumentNullException.ThrowIfNull(${1:value});",
+      "}"
+    ],
+    "description": "JetBrains ContractAnnotation for null => halt"
+  },
+  "CS ItemNotNull": {
+    "prefix": "csitemnotnull",
+    "body": [
+      "[ItemNotNull] ${1:IEnumerable<string>} ${2:items}"
+    ],
+    "description": "JetBrains ItemNotNull collection annotation"
+  },
+  "CS ValueRange": {
+    "prefix": "csvaluerange",
+    "body": [
+      "[ValueRange(${1:0}, ${2:100})] ${3:int} ${4:percentage}"
+    ],
+    "description": "JetBrains ValueRange annotation"
+  },
+  "CS NonNegativeValue": {
+    "prefix": "csnonnegative",
+    "body": [
+      "[NonNegativeValue] ${1:int} ${2:value}"
+    ],
+    "description": "JetBrains NonNegativeValue annotation"
+  }
+}

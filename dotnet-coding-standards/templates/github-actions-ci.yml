@@ -1,0 +1,138 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+env:
+  DOTNET_VERSION: '10.0.x'
+  COVERAGE_THRESHOLD: 80
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    
+    - name: Restore dependencies
+      run: dotnet restore
+    
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+    
+    - name: Test with Coverage
+      run: |
+        dotnet test --no-build --configuration Release \
+          --settings coverlet.runsettings \
+          --collect:"XPlat Code Coverage" \
+          --results-directory ./TestResults
+    
+    - name: Install ReportGenerator
+      run: dotnet tool install -g dotnet-reportgenerator-globaltool
+    
+    - name: Generate Coverage Report
+      run: |
+        reportgenerator \
+          -reports:./TestResults/**/coverage.cobertura.xml \
+          -targetdir:./TestResults/CoverageReport \
+          -reporttypes:"Html;TextSummary;Badges"
+    
+    - name: Check Coverage Threshold
+      run: |
+        COVERAGE=$(grep "Line coverage" ./TestResults/CoverageReport/Summary.txt | grep -oP '\d+\.\d+')
+        echo "Code coverage: ${COVERAGE}%"
+        
+        if (( $(echo "$COVERAGE < ${{ env.COVERAGE_THRESHOLD }}" | bc -l) )); then
+          echo "❌ Code coverage ${COVERAGE}% is below the required ${{ env.COVERAGE_THRESHOLD }}% threshold"
+          exit 1
+        fi
+        
+        echo "✅ Code coverage ${COVERAGE}% meets the required ${{ env.COVERAGE_THRESHOLD }}% threshold"
+    
+    - name: Upload Coverage Report
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: coverage-report
+        path: ./TestResults/CoverageReport
+        retention-days: 30
+    
+    - name: Upload Coverage to Codecov
+      uses: codecov/codecov-action@v4
+      if: github.event_name == 'push'
+      with:
+        files: ./TestResults/**/coverage.cobertura.xml
+        fail_ci_if_error: false
+
+  lint:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    
+    - name: Restore
+      run: dotnet restore
+    
+    - name: Check for StyleCop Violations
+      run: |
+        OUTPUT=$(dotnet build --no-restore 2>&1)
+        echo "$OUTPUT"
+        
+        # Check for any SA warnings (StyleCop)
+        if echo "$OUTPUT" | grep -E "warning SA[0-9]{4}"; then
+          echo "❌ StyleCop violations found"
+          exit 1
+        fi
+        
+        echo "✅ No StyleCop violations"
+    
+    - name: Check for Pragma Suppressions
+      run: |
+        if grep -r "#pragma warning disable" --include="*.cs" src/; then
+          echo "❌ Pragma suppressions found - these are forbidden"
+          exit 1
+        fi
+        
+        echo "✅ No pragma suppressions found"
+    
+    - name: Check for Microsoft Logging Config
+      run: |
+        if grep -r '"Logging"' --include="appsettings*.json" src/; then
+          echo "❌ Microsoft logging config found - use Serilog section instead"
+          exit 1
+        fi
+        
+        echo "✅ No Microsoft logging config found"
+
+  security:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    
+    - name: Restore
+      run: dotnet restore
+    
+    - name: Check for Vulnerable Packages
+      run: dotnet list package --vulnerable --include-transitive
