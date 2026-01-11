@@ -41,7 +41,7 @@ Skills extend Claude Code's capabilities with domain-specific knowledge, templat
 Add this marketplace to Claude Code with a single command:
 
 ```bash
-claude /install-plugin github:Roly67/cc-skills
+claude /install-plugin github:roly67/cc-skills
 ```
 
 ### Manual Installation
@@ -68,7 +68,7 @@ Add to your Claude Code settings file (`~/.claude/settings.json`):
 ```json
 {
   "plugins": [
-    "github:Roly67/cc-skills"
+    "github:roly67/cc-skills"
   ]
 }
 ```
@@ -80,7 +80,7 @@ Add to your project's `.claude/settings.json`:
 ```json
 {
   "plugins": [
-    "github:Roly67/cc-skills"
+    "github:roly67/cc-skills"
   ]
 }
 ```

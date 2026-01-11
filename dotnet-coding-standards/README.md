@@ -45,7 +45,7 @@ This skill equips Claude Code with comprehensive .NET development knowledge—fr
 ### Quick Install
 
 ```bash
-claude /install-plugin github:Roly67/cc-skills
+claude /install-plugin github:roly67/cc-skills
 ```
 
 ### When to Use
