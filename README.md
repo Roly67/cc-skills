@@ -1,6 +1,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Claude_Code-Skills-7c3aed?style=for-the-badge&labelColor=1e1e2e" alt="Claude Code Skills" />
   <img src="https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge" alt="MIT License" />
+  <a href="https://github.com/Roly67/cc-skills/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Roly67/cc-skills/ci.yml?style=for-the-badge&label=CI" alt="CI Status" /></a>
 </p>
 
 <h1 align="center">
