@@ -1,0 +1,195 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate JSON files
+        run: |
+          echo "Validating JSON files..."
+          for file in $(find . -name "*.json" -type f); do
+            echo "  Checking $file"
+            python3 -m json.tool "$file" > /dev/null || exit 1
+          done
+          echo "All JSON files are valid"
+
+      - name: Validate SKILL.md frontmatter
+        run: |
+          echo "Validating SKILL.md files..."
+          for file in $(find . -name "SKILL.md" -type f); do
+            echo "  Checking $file"
+            # Check that file starts with ---
+            if ! head -1 "$file" | grep -q "^---$"; then
+              echo "    ERROR: Missing YAML frontmatter"
+              exit 1
+            fi
+            # Check that frontmatter is closed
+            if ! awk '/^---$/{count++} count==2{found=1; exit} END{exit !found}' "$file"; then
+              echo "    ERROR: YAML frontmatter not closed"
+              exit 1
+            fi
+            # Check required fields
+            if ! grep -q "^name:" "$file"; then
+              echo "    ERROR: Missing 'name' field"
+              exit 1
+            fi
+            if ! grep -q "^version:" "$file"; then
+              echo "    ERROR: Missing 'version' field"
+              exit 1
+            fi
+            echo "    Valid"
+          done
+          echo "All SKILL.md files are valid"
+
+      - name: Check for required files
+        run: |
+          echo "Checking required files..."
+
+          # Root level
+          for file in README.md LICENSE CLAUDE.md CONTRIBUTING.md; do
+            if [ ! -f "$file" ]; then
+              echo "  ERROR: Missing $file"
+              exit 1
+            fi
+            echo "  Found $file"
+          done
+
+          # Marketplace
+          if [ ! -f ".claude-plugin/marketplace.json" ]; then
+            echo "  ERROR: Missing .claude-plugin/marketplace.json"
+            exit 1
+          fi
+          echo "  Found .claude-plugin/marketplace.json"
+
+          # Each skill directory
+          for dir in $(find . -maxdepth 1 -type d -name "*-*" ! -name ".*"); do
+            skill=$(basename "$dir")
+            echo "  Checking skill: $skill"
+
+            for file in SKILL.md README.md LICENSE; do
+              if [ ! -f "$dir/$file" ]; then
+                echo "    ERROR: Missing $dir/$file"
+                exit 1
+              fi
+              echo "    Found $file"
+            done
+          done
+
+          echo "All required files present"
+
+      - name: Validate marketplace.json structure
+        run: |
+          echo "Validating marketplace.json structure..."
+
+          # Check required top-level fields
+          for field in name description owner plugins; do
+            if ! python3 -c "import json; data=json.load(open('.claude-plugin/marketplace.json')); assert '$field' in data" 2>/dev/null; then
+              echo "  ERROR: Missing '$field' field in marketplace.json"
+              exit 1
+            fi
+          done
+
+          # Check each plugin has required fields
+          python3 << 'EOF'
+          import json
+          import sys
+
+          with open('.claude-plugin/marketplace.json') as f:
+              data = json.load(f)
+
+          required_plugin_fields = ['name', 'description', 'source']
+
+          for i, plugin in enumerate(data.get('plugins', [])):
+              for field in required_plugin_fields:
+                  if field not in plugin:
+                      print(f"  ERROR: Plugin {i} missing '{field}' field")
+                      sys.exit(1)
+              print(f"  Plugin '{plugin['name']}' is valid")
+
+          print("marketplace.json structure is valid")
+          EOF
+
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli
+
+      - name: Create config
+        run: |
+          cat > .markdownlint.json << 'EOF'
+          {
+            "default": true,
+            "MD013": false,
+            "MD033": false,
+            "MD041": false,
+            "MD024": { "siblings_only": true }
+          }
+          EOF
+
+      - name: Run markdownlint
+        run: markdownlint '**/*.md' --ignore node_modules
+
+  link-check:
+    name: Check Links
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdown-link-check
+        run: npm install -g markdown-link-check
+
+      - name: Create config
+        run: |
+          cat > .markdown-link-check.json << 'EOF'
+          {
+            "ignorePatterns": [
+              { "pattern": "^https://github.com/.*/(issues|pulls)" },
+              { "pattern": "^#" }
+            ],
+            "timeout": "10s",
+            "retryOn429": true,
+            "retryCount": 3,
+            "aliveStatusCodes": [200, 206, 301, 302, 308]
+          }
+          EOF
+
+      - name: Check links in markdown files
+        run: |
+          find . -name "*.md" -not -path "./node_modules/*" | while read file; do
+            echo "Checking $file"
+            markdown-link-check --config .markdown-link-check.json "$file" || true
+          done
