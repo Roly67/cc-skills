@@ -228,6 +228,8 @@ triggers:
 - ✓ Document the "why" behind decisions
 - ✓ Keep content current and maintained
 
+For detailed contribution guidelines, see [CONTRIBUTING.md](CONTRIBUTING.md).
+
 <br>
 
 ## License
